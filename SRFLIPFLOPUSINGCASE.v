@@ -3,15 +3,17 @@ module SRFLIPFLOPUSINGCASE(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral 
   output reg q;
   output q_bar;
  
-  always@(posedge clk) begin // for synchronous reset
-    if(!reset)       q <= 0;
+  always@(posedge clk) 
+ begin // for synchronous reset
+    if(!reset)       
+	    q<= 0;
     else 
   begin
       case({s,r})       
-	     2'b00: q <= q;     // No change
-                               // Write logic for reset
-                              // Write logic for set
-                             // Write logic for Invalid state
+	     2'b00: q <= q;
+	     2'b01:q<=1'b0;
+	     2'b10:q<=1'b1;
+	     2'b11 q<=1'bx; 
       endcase
     end
   end
